@@ -104,19 +104,23 @@ void arrDeleteElement(int*& iArr, int& iLength, int iDeleteLocation)
 
 int main()
 {
-    int iLength = 5;
-    int* iArr = new int[iLength];
-    arrInput(iArr, iLength);
-    cout << "Mang sau khi nhap: ";
-    arrOutput(iArr, iLength);
+    int iA = 5;
+    cout << "Bien Thuong\n";
+    cout << "1. Gia tri: " << iA << "\n";
+    cout << "2. Dia chi: " << &iA << "\n";
 
-    // arrAddElement(iArr, iLength, 2, 69);
-    // cout << "\nMang sau khi them phan tu 69: ";
-    // arrOutput(iArr, iLength);
+    int* iPtr = &iA;
+    cout << "\nCon Tro Cap 1\n";
+    cout << "1. Gia tri: " << *iPtr << "\n";
+    cout << "2. Dia chi that: " << &iPtr << "\n";
+    cout << "3. Vung nho: " << iPtr << "\n";
 
-    arrDeleteElement(iArr, iLength, 2);
-    cout << "\nMang sau khi xoa phan tu vi tri 2: ";
-    arrOutput(iArr, iLength);
-
-    delete[] iArr;
+    // int** iPtrLevel2 = &iA;
+    int** iPtrLevel2;
+    iPtrLevel2 = &iPtr;
+    cout << "\nCon Tro Cap 2\n";
+    cout << "Gia tri: " << **iPtrLevel2 << "\n";
+    cout << "Dia chi that: " << &iPtrLevel2 << "\n";
+    cout << "Vung nho 1: " << iPtrLevel2 << "\n";
+    cout << "Vung nho 2: " << *iPtrLevel2 << "\n";
 }
