@@ -41,7 +41,11 @@ void MatrixREADLOC(int**& iMatrix, int iRowOldSize, int iColOldSize, int iNewSiz
     MatrixAllocationMemory(iMatrixTemp, iRowOldSize, iColOldSize);
 
     // Đỗ dữ liệu từ mảng chính sang mảng tạm.
-    MatrixDataCopy(iMatrix, iMatrixTemp, iRowOldSize, iColOldSize);
+    MatrixDataCopy(
+        iMatrix, iMatrixTemp,
+        (bCheck ? iNewSize : iRowOldSize),
+        (bCheck ? iColOldSize : iNewSize)
+    );
 
     // B2: Giải phóng mảng hiện tại và cấp phát với kích thước mới.
     MatrixFree(iMatrix, iRowOldSize, iColOldSize);
@@ -121,7 +125,8 @@ void MatrixColDelete(int**& iMatrix, int iRows, int& iCols, int iColDeleteIndex)
             iMatrix[i][j - 1] = iMatrix[i][j];
         }
     }
-    MatrixREADLOC(iMatrix, iRows, iCols, iCols--, false);
+    MatrixREADLOC(iMatrix, iRows, iCols, iCols, false);
+    iCols--;
 }
 
 void MatrixRandomElement(int** iMatrix, int iRows, int iCols)
